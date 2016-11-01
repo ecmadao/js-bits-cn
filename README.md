@@ -9,11 +9,12 @@
 ## Menu
 
 - [AMD CommonJS and ES6 模块机制的使用](js/amd-commonjs-es6modules.js)
+- [Array concat() 和 push() 方法](js/array-concat-push.js)
 
 ## Todo
 
 - [x] [AMD CommonJS and ES6 Modules Usage](js/amd-commonjs-es6modules.js)
-- [ ] [Array concat() push()](js/array-concat-push.js)
+- [x] [Array concat() push()](js/array-concat-push.js)
 - [ ] [Array every() some()](js/array-every-some.js)
 - [ ] [Array filter() map() reduce()](js/array-filter-map-reduce.js)
 - [ ] [Array forEach()](js/array-foreach.js)
