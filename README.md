@@ -16,6 +16,7 @@
 - [理解 Array 中的 通过值传递 和 通过引用传递](js/array-pass-by-val-reference.js)
 - [Array 的 reduce() 方法](js/array-reduce.js)
 - [Array 的 slice() 和 splice() 方法](js/array-slice-splice.js)
+- [Apply 和 Call 方法](js/call-apply-function.js)
 
 ## Todo
 
@@ -27,7 +28,7 @@
 - [x] [Array pass by val vs reference](js/array-pass-by-val-reference.js)
 - [x] [Array reduce()](js/array-reduce.js)
 - [x] [Array slice() splice()](js/array-slice-splice.js)
-- [ ] [Apply & Call function](js/call-apply-function.js)
+- [x] [Apply & Call function](js/call-apply-function.js)
 - [ ] [Bind function](js/bind-function.js)
 - [ ] [Bitwise operators](js/bitwise-operators.js)
 - [ ] [Closures](js/closures.js)
