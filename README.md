@@ -14,6 +14,7 @@
 - [Array filter()、map() 和 reduce()](js/array-filter-map-reduce.js)
 - [Array 的 forEach() 方法](js/array-foreach.js)
 - [理解 Array 中的 通过值传递 和 通过引用传递](js/array-pass-by-val-reference.js)
+- [Array 的 reduce() 方法](js/array-reduce.js)
 
 ## Todo
 
@@ -23,7 +24,7 @@
 - [x] [Array filter() map() reduce()](js/array-filter-map-reduce.js)
 - [x] [Array forEach()](js/array-foreach.js)
 - [x] [Array pass by val vs reference](js/array-pass-by-val-reference.js)
-- [ ] [Array reduce()](js/array-reduce.js)
+- [x] [Array reduce()](js/array-reduce.js)
 - [ ] [Array slice() splice()](js/array-slice-splice.js)
 - [ ] [Apply & Call function](js/call-apply-function.js)
 - [ ] [Bind function](js/bind-function.js)
