@@ -12,6 +12,7 @@
 - [Array concat() 和 push() 方法](js/array-concat-push.js)
 - [Array every() 和 some() 方法](js/array-every-some.js)
 - [Array filter()、map() 和 reduce()](js/array-filter-map-reduce.js)
+- [Array 的 forEach() 方法](js/array-foreach.js)
 
 ## Todo
 
@@ -19,7 +20,7 @@
 - [x] [Array concat() push()](js/array-concat-push.js)
 - [x] [Array every() some()](js/array-every-some.js)
 - [x] [Array filter() map() reduce()](js/array-filter-map-reduce.js)
-- [ ] [Array forEach()](js/array-foreach.js)
+- [x] [Array forEach()](js/array-foreach.js)
 - [ ] [Array pass by val vs reference](js/array-pass-by-val-reference.js)
 - [ ] [Array reduce()](js/array-reduce.js)
 - [ ] [Array slice() splice()](js/array-slice-splice.js)
