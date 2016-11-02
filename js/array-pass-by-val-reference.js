@@ -1,12 +1,12 @@
 /**
- * Understanding arrays - Pass by reference vs Pass by value
+ * 理解 arrays - 通过值传递 vs 通过引用传递
  *
- * @Reference:
+ * @参考资料:
  * http://orizens.com/wp/topics/javascript-arrays-passing-by-reference-or-by-value/
  */
 
-// Pass by reference
-// By default - Arrays are passed to a function by reference
+// 通过引用传递
+// 在默认情况下，array 作为参数传递给函数时，是作为引用传递的
 var a = [3, 'my new post', {345}];
 
 function renderData(a) {
@@ -14,22 +14,24 @@ function renderData(a) {
 }
 
 renderData(a);
-alert(a);	// will output the new a - [3, 'my new post', {345}, 4]
+alert(a);	// push 方法返回一个新 array [3, 'my new post', {345}, 4]
 
-// Pass by value
-// This can be done by using the native array method – “slice()”
+// 通过值传递
+// 通过调用原生的 array 方法 - slice()，可以达到通过值传递的效果
 //
-// Basically, the slice() operation clones the array and returns the reference to the new array. Also note that:
-// - For object references (and not the actual object), slice copies object references into the new array.
-//   Both the original and new array refer to the same object. If a referenced object changes, the changes are visible to both the new and original arrays.
-//   explain:
+// 一般来说，slice() 会克隆 array，然后使用新 array 的引用。需要注意的是：
+// - array 中含有对象时，针对对象的引用（而不是真正的对象），slice 会复制一份引用到新的 array 里
+//
+// 因此，无论是之前的 array 还是复制出的新 array，都指向相同的对象。如果对象改变了，那么两个 array 内的对象都会改变。
+//
+// 举栗子：
 !function() {
 
 	// object
 	var obj = {"abc": 456};
-	var arr = [obj].slice(); // [{"abc": 456}]
-	obj.abc = 4567;
-	console.log(arr, obj); // [{"abc": 4567}] {"abc": 4567}
+	var arr = [obj].slice(); // [{"abc": 456}]，复制自 [obj]，且 arr 内的 obj 是引用 {"abc": 456}
+	obj.abc = 4567; // 改变原始对象
+	console.log(arr, obj); // [{"abc": 4567}] {"abc": 4567} // 会发现 arr 内的 obj 也被改变
 
 	// array
 	var oldarr = [456];
@@ -39,16 +41,16 @@ alert(a);	// will output the new a - [3, 'my new post', {345}, 4]
 
 }()
 
-// - For strings and numbers, slice copies strings and numbers into the new array.
-//   Changes to the string or number in one array does not affect the other array.
-//   explain:
+// - 而对于 array 中的 String 和 number 类型，则直接复制到新数组里
+//   他们的改变互不影响
+// 举栗子：
 !function() {
 
-	// string in array
+	// 数组中有串 String
 	var oldarr = ['abc'];
 	var arr = oldarr.slice(); // ['abc']
 	oldarr[0] = 'abcd';
-	console.log(arr, oldarr); // ['abc'] ['abcd']
+	console.log(arr, oldarr); // ['abc'] ['abcd'] // 直接复制的值而不是引用，因此互不影响
 
 	// number in array
 	var oldarr = [123, 456, 789];
@@ -65,9 +67,9 @@ function renderData(a) {
 }
 
 renderData(a.slice());
-alert(a);	// will output the original a - [3, 'my new post', {345}]
+alert(a);	// [3, 'my new post', {345}]
 
-// If you did want to copy array's object references by value -- Use JSON.parse(JSON.stringify(array))
-// Note: It does have a few caveats with copying functions/dates as values.
-// For more info check: https://github.com/vasanthk/js-bits/blob/master/js/object-clone.js
+// 如果你确实想通过值传递来复制数组中的对象，那么需要使用 JSON.parse(JSON.stringify(array))
+// 注意：在复制 functions/dates 对象的时候会有一些警告
+// 更多内容请查看：https://github.com/vasanthk/js-bits/blob/master/js/object-clone.js
 var tempArray = JSON.parse(JSON.stringify(mainArray));
