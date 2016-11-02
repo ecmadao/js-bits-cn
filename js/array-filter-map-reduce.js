@@ -1,19 +1,19 @@
 /**
  * Array filter(), map() and reduce()
  *
- * @Reference:
+ * @参考资料：
  * http://danmartensen.svbtle.com/javascripts-map-reduce-and-filter
  * http://elijahmanor.com/reducing-filter-and-map-down-to-reduce/
  * http://cryto.net/~joepie91/blog/2015/05/04/functional-programming-in-javascript-map-filter-reduce/
  *
- * Advanced:
- * Implementing filter, map, reduce internals in JS:
+ * 进阶学习：
+ * JavaScript 内部实现 filter, map, reduce 的方式:
  * http://matthewodette.com/map-filter-and-fold-in-javascript/
  */
 
-/** Normal for() loop
- *  for loops still definitely have a place when working with large arrays
- *  (e.g. over 1,000 elements) or needing to break the traversal if a condition is met.
+/** 普通的 for() 循环
+ * for 循环在处理大型数组时依旧有用武之地（例如，拥有 1000 个元素的数组）
+ * 或者需要在循环时根据条件来中断的话，for 也依旧很好用
  */
 (function () {
   var array = [1, 2, 3, 4];
@@ -27,25 +27,23 @@
 
 /** Array.map()
  *
- *  Use when:
- *  You want to translate/map all elements in an array to another set of values.
+ *  什么时候使用：
+ *  当你想把一个 array 中的所有元素进行转换，并返回新的数组时
  *
- *  What it does:
- *  Traverses the array from left to right invoking a callback function on each element with parameters.
- *  For each callback the value returned becomes the element in the new array.
- *  After all the elements have been traversed the map() returns the new array with all the translated elements.
+ *  map 方法做了什么：
+ *  从左往右遍历数组，将各元素分别代入回调函数进行调用，并返回回调函数的返回值，最终组成一个新的数组
  *
- *  eg. Convert Farenheit into Celcius
+ *  举个栗子：把 一组华氏温度 转换成 一组摄氏温度
  *
- *  Format:
+ *  语法：
  *  array.map(function(elem, index, array) {
  *    ...
  *  }, thisArg);
  *
- *  elem: element value
- *  index: index in each traversal, moving left to right
- *  array: original array invoking the method
- *  thisArg: (Optional) object that will be referred to as 'this' in the callback
+ *  elem: array 中的各个元素
+ *  index: 偏移，从左往右递增
+ *  array: 调用 map 方法的数组
+ *  thisArg: 作为回调中的作用域（this）
  */
 
 (function () {
@@ -59,26 +57,26 @@
 
 /** Array.filter()
  *
- *  Use when:
- *  You want to remove unwanted elements based on a condition.
+ *  什么时候使用：
+ *  从 array 中过滤不需要的元素时
  *
- *  What it does:
- *  Like map() it traverses the array from left to right invoking a callback function on each element.
- *  The returned value must be a boolean identifying whether the element will be kept or discarded.
- *  After all the elements have been traversed filter() returns a new array with all elements that returned true.
- *  It has the same parameters as map().
+ *  filter 方法做了什么：
+ *  与 map 方法类似，从左往右遍历数组，将各元素分别代入回调函数进行调用。
+ *  但回调函数的返回值必须是一个 boolean，以此来确定当前循环的元素是否要过滤掉。返回 false 则过滤，否则保留
+ *  但要注意的是，在循环完毕之后，将返回一个新的数组，而只有使回调函数返回了 true 的元素才会在新数组里。
+ *  回调函数的参数和 map() 方法一样。
  *
- *  eg. Remove duplicates from an array
+ *  举个栗子：移除数组中重复的元素
  *
- *  Format:
+ *  语法：
  *  array.filter(function(elem, index, array) {
  *    ...
  *  }, thisArg);
  *
- *  elem: element value
- *  index: index in each traversal, moving left to right
- *  array: original array invoking the method
- *  thisArg: (optional) object that will be referred to as 'this' in the callback
+ *  elem: array 中的各个元素
+ *  index: 偏移，从左往右递增
+ *  array: 调用 filter 方法的数组
+ *  thisArg: 作为回调中的作用域（this）
  */
 
 (function () {
@@ -92,26 +90,25 @@
 
 /** Array.reduce()
  *
- *  Use when:
- *  You want to find a cumulative or concatenated value based on elements across the array.
+ *  什么时候使用：
+ *  当你想对一个 array 中的元素进行累加或者拼接时
  *
- *  What it does:
- *  Like map() it traverses the array from left to right invoking a callback function on each element.
- *  The value returned is the cumulative value passed from callback to callback.
- *  After all elements have been traversed reduce() returns the cumulative value.
+ *  reduce 方法做了什么：
+ *  与 map 方法类似，从左往右遍历数组，将各元素分别代入回调函数进行调用。
+ *  但回调函数的返回值会作为下一次遍历时回调函数的参数，在遍历完所有元素之后，返回最终结果
  *
- *  eg. Sum up countries orbital rocket launches in 2014.
+ *  举个栗子：计算 2014 年各国家发射火箭数目的综合
  *
- *  Format:
+ *  语法：
  *  array.reduce(function(prevVal, elem, index, array) {
  *    ...
  *  }, initialValue);
  *
- *  prevVal: Cumulative value returned through each callback
- *  elem: element value
- *  index: index of traversal, moving left to right
- *  array: original array invoking the method
- *  initialValue: (Optional) object used as first argument in the first (leftmost) callback.
+ *  prevVal: 上一个回调返回的结果
+ *  elem: array 中的元素
+ *  index: 偏移，从左往右递增
+ *  array: 调用 reduce 方法的数组
+ *  initialValue: 初始化的值，作为第一个回调的参数
  *
  */
 (function () {
