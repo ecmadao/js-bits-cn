@@ -20,6 +20,7 @@
 - [Bind 方法](js/bind-function.js)
 - [按位操作符](js/bitwise-operators.js)
 - [闭包](js/closures.js)
+- [强制类型转换](js/coercion.js)
 
 ## Todo
 
@@ -35,7 +36,7 @@
 - [x] [Bind function](js/bind-function.js)
 - [x] [Bitwise operators](js/bitwise-operators.js)
 - [x] [Closures](js/closures.js)
-- [ ] [Coercion](js/coercion.js)
+- [x] [Coercion](js/coercion.js)
 - [ ] [Conditional function declaration](js/conditional-function-declaration.js)
 - [ ] [Currying](js/currying.js)
 - [ ] [DOM](js/dom.js)

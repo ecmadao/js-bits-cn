@@ -1,35 +1,38 @@
 /**
- * Coercion:
- * Converting a value from one type to another is often called "type casting," when done explicitly,
- * and "coercion" when done implicitly (forced by the rules of how a value is used)
+ * 强制类型转换:
+ * 将某个值的类型转换成其他类型通常叫做 “类型转换”，在执行过程中，转换会隐式强制执行
  *
  * == vs ===
- * The identity (===) operator behaves identically to the equality (==) operator except no type conversion is done,
- * and the types must be the same to be considered equal.
+ * 除了 恒等操作 (===) 会对双方类型验证，相等操作 (==) 会对双方进行强制类型转换以外，在其他方面的表现一致
  *
- * The == operator will compare for equality after doing any necessary type conversions.
- * The === operator will not do the conversion, so if two values are not the same type === will simply return false.
- * It's this case where === will be faster, and may return a different result than ==. In all other cases performance will be the same.
+ * == 会对双方进行必要的强制类型转换，之后再比较 value
+ * === 不会进行转换，因此如果两个值的类型不同则直接返回 false
+ * 因此，=== 的比较会更快，而且可能和 == 的结果不一样
  *
- * Links:
+ * 参考资料:
  * http://stackoverflow.com/questions/359494/does-it-matter-which-equals-operator-vs-i-use-in-javascript-comparisons
  * http://davidwalsh.name/fixing-coercion#isnt-coercion-already-dead
  * http://bytearcher.com/articles/equality-comparison-operator-javascript/
  * http://rainsoft.io/the-legend-of-javascript-equality-operator/
  * http://bytearcher.com/articles/equality-comparison-operator-javascript/
+ *
+ * 译者注：
+ * 补充一份资料：
+ * 一张图彻底搞懂JavaScript的==运算
+ * https://zhuanlan.zhihu.com/p/21650547
  */
 
-// Coercion in JS
+// JS 中的强制类型转换
 (function () {
   var x = 42;
-  var y = x + "";     // implicit coercion!
+  var y = x + "";     // 隐式转换
   console.log(y);     // "42"
 
-  var z = String(x);  // explicit coercion!
+  var z = String(x);  // 显式转换
   console.log(z);     // "42"
 })();
 
-// Equality checks - Crazyyy Sh*t!!!
+// Equality checks - Crazyyy Sh*t!!! 我也觉得😂
 (function () {
   console.log('' == '0');           // false
   console.log(0 == '');             // true
@@ -65,8 +68,8 @@
   console.log(e == f);            // true
   console.log(e === f);           // true
 
-  // Here the == operator is checking the values of the two objects and returning true,
-  // but the === is seeing that they're not the same type and returning false.
+  // == 操作检查两个对象的值，并返回 true
+  // === 检测到两者不是同样的对象，返回 false
   console.log("abc" == new String("abc"));    // true
   console.log("abc" === new String("abc"));   // false
 })();
