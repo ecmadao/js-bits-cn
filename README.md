@@ -26,6 +26,7 @@
 - [DOM API 操作](js/dom.js)
 - [事件冒泡](js/event-bubbling.js)
 - [事件委托](js/event-delegation.js)
+- [事件处理](js/event-handling.js)
 
 ## Todo
 
@@ -47,7 +48,7 @@
 - [x] [DOM](js/dom.js)
 - [x] [Event Bubbling](js/event-bubbling.js)
 - [x] [Event Delegation](js/event-delegation.js)
-- [ ] [Event Handling](js/event-handling.js)
+- [x] [Event Handling](js/event-handling.js)
 - [ ] [Factory Functions](js/factory-functions.js)
 - [ ] [Floating point precision](js/floating-point-precision.js)
 - [ ] [for-in with hasOwnProperty](js/for-in-with-hasOwnProperty.js)
