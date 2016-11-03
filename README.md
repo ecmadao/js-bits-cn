@@ -18,6 +18,7 @@
 - [Array 的 slice() 和 splice() 方法](js/array-slice-splice.js)
 - [Apply 和 Call 方法](js/call-apply-function.js)
 - [Bind 方法](js/bind-function.js)
+- [按位操作符](js/bitwise-operators.js)
 
 ## Todo
 
@@ -31,7 +32,7 @@
 - [x] [Array slice() splice()](js/array-slice-splice.js)
 - [x] [Apply & Call function](js/call-apply-function.js)
 - [x] [Bind function](js/bind-function.js)
-- [ ] [Bitwise operators](js/bitwise-operators.js)
+- [x] [Bitwise operators](js/bitwise-operators.js)
 - [ ] [Closures](js/closures.js)
 - [ ] [Coercion](js/coercion.js)
 - [ ] [Conditional function declaration](js/conditional-function-declaration.js)
