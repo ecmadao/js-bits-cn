@@ -1,17 +1,17 @@
 /**
- * Conditional Function declaration
+ * 条件表达式内函数声明
  *
- * @TLDR: Invalid in JavaScript. So, avoid it!
+ * @TLDR: 在 js 中不科学（无效），尽量避免使用！
  *
  * @Info:
  * ECMA-262 spec: A Block is defined as one or more Statements, and a FunctionDeclaration is not a Statement.
- * Hence, function declarations inside an if/else conditional is invalid.
+ * 因此，在 if/else 中进行函数声明是无效的
  *
  * @Note:
- * - Browsers deal with it in different ways. Few of them hoist the fn and few don't (thinks of it as a fn expression)
- * - In 'strict' mode this will throw an error.
+ * - 浏览器对其的处理方式各不相同。有些可以支持但也有一些不行（仅仅当做普通的函数表达式）。
+ * - 在严格模式下（'strict'）会报错
  *
- * @Reference:
+ * @参考资料:
  * ECMA-262: http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=98
  */
 
@@ -22,8 +22,8 @@
             alert("Works");
         }
     }
-    test(); // alerts "Works"... ohh boy!
-    // Output is printed in most browsers due to hoisting of functions, although it is invalid in JavaScript
+    test(); // "Works"... 函数还是被声明了！
+    // 在多数浏览器里，会进行变量提升（但在条件表达式中声明的函数依旧被正常声明了）
 }());
 
 
@@ -35,6 +35,6 @@
         }
     }
     test(); // Error: 'undefined' is not a function
-    // Error is thrown, because the variable is hoisted, but not the function assigned to it.
+    // 抛出一个错误。因为 test 变量被提升了，但是没有赋值。
     // Warning - Named function expressions are still hoisted in < IE9 (IE bug/inconsistency).
 }());

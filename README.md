@@ -21,6 +21,7 @@
 - [按位操作符](js/bitwise-operators.js)
 - [闭包](js/closures.js)
 - [强制类型转换](js/coercion.js)
+- [条件表达式内函数声明](js/conditional-function-declaration.js)
 
 ## Todo
 
@@ -37,7 +38,7 @@
 - [x] [Bitwise operators](js/bitwise-operators.js)
 - [x] [Closures](js/closures.js)
 - [x] [Coercion](js/coercion.js)
-- [ ] [Conditional function declaration](js/conditional-function-declaration.js)
+- [x] [Conditional function declaration](js/conditional-function-declaration.js)
 - [ ] [Currying](js/currying.js)
 - [ ] [DOM](js/dom.js)
 - [ ] [Event Bubbling](js/event-bubbling.js)
