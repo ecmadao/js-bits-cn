@@ -1,88 +1,103 @@
 /**
  * DOM API
  *
- * The DOM represents a document as a tree. The tree is made up of parent-child relationships, a parent can have one or many children nodes.
- * The idea of DOM is that every node is an object. We can get a node and change its properties
+ * DOM，即将 document 看做一个树，由 父节点-子节点 关系组成，每个父节点都含有一个或多个子节点
+ * DOM 认为每个节点都是一个对象，我们可以获取并改变它的属性。
  *
- * @Reference:
+ * @参考资料:
  * http://javascript.info/tutorial/dom
  * http://www.quirksmode.org/dom/
  * http://domenlightenment.com/
  */
 
-// BASIC ELEMENT SELECTORS
-document.getElementById("IDName"); // Selects the first element with the ID passed. It is invalid to use multiple IDs in HTML, however if duplicated, it selects the first one.
-document.getElementsByClassName("ClassName"); // Selects the elements with the Class name passed. It returns an NodeList array.
-document.getElementsByName("Name"); // Selects the elements with the Name passed, returns a NodeList array.
-document.getElementsByTagName("TagName"); // Selects the elements with the passed Tag, returns a NodeList array.
-document.querySelector("#IDName or .ClassName"); // Selects the first element that matched the selector value.
-document.querySelectorAll("#IDName or .ClassName"); // Selects all the element that it finds with the passed name and type. It returns a NodeList array.
+// 基本的元素选择
+document.getElementById("IDName"); // 选择相应 ID 的第一个元素。尽管在 HTML 里多个重复的 ID 不合法，但如果真那么写了，则只选择第一个
+document.getElementsByClassName("ClassName"); // 根据 class 名称选择，返回一个 array
+document.getElementsByName("Name"); // 根据 Node name 选择，返回一个 array
+document.getElementsByTagName("TagName"); // 根据 TagName 选择，返回一个 array
+document.querySelector("#IDName or .ClassName"); // 返回匹配的第一个元素
+document.querySelectorAll("#IDName or .ClassName"); // 返回一个匹配的 array
 
-// ROOT ELEMENT
+// 获取根节点元素
 console.log(document.documentElement);
 
-// In the world of DOM, an “element not found” or “no such element” is always null.
-// It is impossible to reference elements that are not yet rendered at the time of script execution.
-// For eg. if you access document.body in <head> -- it returns null, since the <body> is not yet loaded.
+// 在 DOM 世界里，“element not found” 或者 “no such element” 总是代表 null
+// 不可能引用还没有渲染出来的 DOM 元素
+// 例如，如果你在页面加载时，在 <head> 内获取 document.body，将会返回 null，因为此时 <body> 还没有加载
 
-// CHILD ELEMENTS
+// 子元素
 
 // childNodes
-// All child nodes are referenced including whitespace ones.
+// 返回当前元素所有的子节点，甚至包括空格
 console.log(document.body.childNodes);
 
 // children
-// Sometimes we need to browse only element nodes, skipping text nodes. That’s what the children property is for.
-// It contains all element nodes.
+// 有时候我们只需要获取到 DOM 节点元素，而不需要文字节点等元素
 console.log(document.body.children);
 
-// firstChild and lastChild - Similar to childNodes, it includes text nodes.
-// For excluding text nodes, use firstElementChild and lastElementChild
+// firstChild - 获取到第一个节点，包括空格
+// lastChild - 获取到最后一个节点
+// 它们分别相当于 childNodes 中的第一个/最后一个元素
+console.log(document.body.firstChild);
+console.log(document.body.lastChild);
+
+// firstElementChild - 获取到第一个 DOM 节点元素
+// lastElementChild - 获取到最后一个 DOM 节点元素
+// 它们分别相当于 children 中的第一个/最后一个元素
 console.log(document.body.firstElementChild);
 console.log(document.body.lastElementChild);
 
 // parentNode, previousSibling and nextSibling
-// For excluding text nodes, use previousElementSibling and nextElementSibling
 console.log(document.body.parentNode);
+// 上一个节点元素
+console.log(document.body.previousSibling);
+// 下一个节点元素
+console.log(document.body.nextSibling);
+// 上一个 DOM 节点元素
 console.log(document.body.previousElementSibling);
+// 下一个 DOM 节点元素
 console.log(document.body.nextElementSibling);
 
-// STRUCTURE AND CONTENT PROPERTIES
+// 结构和属性
 
-// nodeType
-// The most important ones are ELEMENT_NODE with number 1 and TEXT_NODE, which has number 3.
+// nodeType 表示某节点的类型，可用于区分不同类型的节点，比如 DOM 元素、文本、注释
+// 尤其要注意的是，DOM 元素的 nodeType 为 1，文本节点的 nodeType 为 3
+// 更多资料可参考：https://developer.mozilla.org/zh-CN/docs/Web/API/Node/nodeType
 var childNodes = document.body.childNodes;
 console.log(childNodes[0].nodeType != 1);
 
 // nodeName, tagName
-// Both nodeName and tagName contain the name of an element node.
-// In HTML any nodeName is uppercased, no matter which case you use in the document.
-// For element nodes, nodeName and tagName are the same.
-// But nodeName property also exists on non-element nodes. eg. alert(document.nodeName) // #document
+// nodeName 和 tagName 都返回节点的名称
+// 在 HTML 里，任意节点的名称都是大写的
+// 对于 DOM 节点而言，nodeName 和 tagName 是一致的
+// 从 DOM 层次来看，nodeName 是 node 接口上的property，而 tagName 是 element 接口上的property
+// 所有节点都继承了 node 接口，而只有 DOM 节点才继承了 element 接口
 console.log(document.body.tagName); // BODY
 
 // innerHTML
-// It allows to access node contents in the text form. innerHTML works only for element nodes.
-// Gotcha: `innerHTML` can't be appended
-// Syntactically, is possible to append to innerHTML with elem.innerHTML += "New text", like below:
-// But what actually is done:
-// 1) Old content is wiped
-// 2) The new value innerHTML is parsed and inserted.
+// 它可以获取到 node 内部的内容，且只有 DOM 节点才可以正常使用
+// 注意: `innerHTML` 无法被追加
+// 正常来看，或许可以通过 elem.innerHTML += "New text" 的方式，直接在 innerHTML 后面进行追加，
+// 但这种行为实际上做的是：
+// 1) 拼接新内容
+// 1) 清除旧内容
+// 2) 重新加载拼接后的新内容
+// 所以比较耗费资源
 document.body.innerHTML += "<div>Hi <img src='smile.gif'/> !</div>";
 document.body.innerHTML += "How you doing?";
 
 // nodeValue
-// The innerHTML works only for element nodes. For other types of nodes, there is a nodeValue property, which keeps the content.
-// eg. text nodes and comments
+// 只有 DOM 节点元素才有 innerHTML 属性，而对于其他类型，则通过 nodeValue 获取值
+// eg. 文字节点 和 注释节点
 document.body.childNodes[i].nodeValue = 'Test';
 
-// PROPERTIES
+// Properties
 
-// DOM node is an object. So it can store custom properties and methods just like any JavaScript object.
-// Custom DOM properties:
-// 1) May have any value.Property names case-sensitive
-// 2) Don’t affect HTML
-// 3) Also, custom properties show up in for..in mixed with native properties:
+// DOM 节点其实就是一个对象，如同其他 js 对象一样，可以保存属性和方法
+// 自定义的 DOM 属性：
+// 1) 对属性的大小写敏感
+// 2) 不影响 HTML
+// 3) 可以在 for..in 的遍历中获取到
 document.body.sayHi = function () {
   alert(this.nodeName);
 };
@@ -95,28 +110,35 @@ for (var key in document.body) {
 }
 alert(list.join('\n'));
 
-// ATTRIBUTES
+// Attributes
 
-// DOM nodes provide access to HTML attributes using the following standard methods:
-// elem.hasAttribute(name) - checks if the attribute exists
-// elem.getAttribute(name) - gets an attribute value
-// elem.setAttribute(name, value) - sets an attribute
-// elem.removeAttribute(name) - removes an attribute
+// DOM 节点有一些可以获取到 HTML 属性的方法：
+// elem.hasAttribute(name) - 检查属性是否存在
+// elem.getAttribute(name) - 获取属性
+// elem.setAttribute(name, value) - 设置属性
+// elem.removeAttribute(name) - 移除属性
 //
-// In contrast with properties, attributes:
-// 1) May be only strings.
-// 2) Names not case-sensitive, because HTML attributes are not case-sensitive
-// 3) They show up in innerHTML (unless it’s older IE)
-// 4) You can list all attributes using an array-like attributes property of the element.
+// 和 properties 对比，attributes：
+// 1) 可能只有 string
+// 2) 命名不是大小写敏感，因为 HTML 属性名称并不在乎大小写
+// 3) 可以被 innerHTML 获取（除非是老版本 IE）
+// 4) 你可以把所有的 attributes 作为一个类数组对象列出来
 var div = document.body.children[0];
-alert(div.getAttribute('ABOUT')); // case insensitive
+alert(div.getAttribute('ABOUT')); // 不区分大小写
 div.setAttribute('Test', 123);
 alert(document.body.innerHTML);
 
-// PROPERTIES AND ATTRIBUTES SYNCHRONIZATION.
+/**
+ * 译者注：
+ * 除此以外，他们获取属性的方式也有所不同
+ * node.getAttribute(xxx) 获取的是 attribute
+ * node.xxx 获取的是 property
+ */
 
-// Every type of DOM nodes has standard properties.
-// Standard DOM properties are synchronized with attributes.
+// PROPERTIES 和 ATTRIBUTES 的同步
+
+// 每种 DOM 节点都有标准的 properties
+// 标准的 DOM properties 会与 attributes 保持同步
 
 // id
 document.body.setAttribute('id', 'la-la-la');
@@ -128,85 +150,85 @@ a.href = '/';
 alert('attribute:' + a.getAttribute('href')); // '/'
 alert('property:' + a.href);  // IE: '/', others: full URL
 
-// Gotcha: There are other attributes, which are synced, but not copied. For example input.checked:
-// The value of input.checked property is either true or false, but the attribute has whatever you put into it.
+// input.checked 的 property 要么是 true 要么是 false，但 attribute 却是由 你的输入决定
 var input = document.body.children[0];
 alert(input.checked); // true
 alert(input.getAttribute('checked')); // empty string
 
 // value
-// There are also built-in properties which are synced one-way only.
-// For example, the input.value is synchronized from the attribute:
+// 有一些内置的 properties 只是单向的同步
+// 比如 input.value，由 attribute 来决定同步
 var input = document.body.children[0];
 input.setAttribute('value', 'new');
 alert(input.value); // 'new', input.value changed
 
-// The "value" attribute keeps the original value after the property was updated,
-// for example when a visitor typed in something. The original value can be used to check if the input is changed, or to reset it.
+// 当 property 的 "value" 更新以后，attribute 还是会保持原有的值。
+// 例如，用户输入某些东西。原有的值保存在 attribute 里，既可以用来检查 value 是否发生了改变，也可以用来重置。
 var input = document.body.children[0];
 input.value = 'new';
 alert(input.getAttribute('value')); // 'markup', not changed!
 
 // class/className
-// Because "class" is a reserved word in JavaScript, the name of the corresponding property for the "class" attribute is className.
-// To avoid IE quirks, just always use className property to manage classes, not the attribute.
+// 因为 class 是 JavaScript 中的预留单词，因此在属性里叫做 className
+// 为了避免 IE 下的问题，尽量使用 property 而不是 attribute 管理 className
 document.body.setAttribute('class', 'big red bloom');
 alert(document.body.className);  // big red bloom
 
-// To live well with any IE, use attributes correctly.
-// Or, in other words, try using properties all the time, until you really need an attribute.
+// 除非非要使用 attribute，否则尽量一直使用 properties
 //
-// And the only times you really need an attribute are:
-// 1) To get a custom HTML attribute, because it is not synced to DOM property.
-// 2) To get an “original value” of the standard HTML attribute, like <INPUT value="...">.
+// 而这种时候你确实需要使用 attribute：
+// 1) 获取自定义的 HTML attribute（不和 DOM property 同步）
+// 2) 获取某些 HTML attribute 的原始值，比如 <INPUT value="...">
 
 // Attributes as DOM nodes
-// In attributes collection, every attribute is represented by a special kind of DOM node. It has name, value and other properties.
+// 每个 attribute 都表现的像特殊的 DOM 节点一样，有自己的名称、属性（properties）和 值
 var span = document.body.children[0];
 alert(span.attributes['style'].value);  // "color:blue;"
 alert(span.attributes['id'].value);  // "my"
 
 // MODIFYING THE DOCUMENT
 
-// Creating elements
-// 1) Creates a new DOM element of type node:
+// 创建元素
+// 1) 创建一个 DOM 节点：
 var div = document.createElement('div');
-// 2) Creates a new DOM element of type text:
+// 2) 创建一个文本节点
 var textElem = document.createTextNode('Robin was here');
-// Cloning
-// An element can also be cloned:
-textElem.cloneNode(true); //Clones an element deeply, with all descendants.
-textElem.cloneNode(false); //Clones an element only, with attributes, but without children.
+// 克隆
+// 元素可以被克隆
+textElem.cloneNode(true); // 深度拷贝
+textElem.cloneNode(false); // 浅拷贝，只复制 attributes，不复制子元素
 
-// Adding elements
-// To do something with the element, you need to call the corresponding method of its parent:
-document.body.appendChild(textElem); //Appends elem to the children of parentElem.
+// 新增元素
+//
+// appendChild 在父节点末尾插入
+document.body.appendChild(textElem);
 
 // parentElem.insertBefore(elem, nextSibling)
-// Inserts elem into the children of parentElem before the element nextSibling.
+// 在某个子节点（nextSibling）之前插入
 // Link: http://stackoverflow.com/a/2007473/1672655
 var div = document.body.children[0];
 var span = document.createElement('span');
 span.innerHTML = 'A new span!';
 div.insertBefore(span, div.firstChild);
-// Gotcha: insertBefore with second argument null works as appendChild.
+// 如果 insertBefore 方法的第二个参数是 null，则其表现的和 appendChild 一致
 elem.insertBefore(newElem, null); // same as
 elem.appendChild(newElem);
 
-// Removing nodes
-// There are two main methods for removing nodes from DOM:
-// parentElem.removeChild(elem) - Remove the elem from the children of parentElem.
-// parentElem.replaceChild(elem, currentElem) - Replace the child element of parentElem, referenced by currentElem with the elem.
+// 移除节点
+//
+// 一般有两种方法可以从 DOM 移除节点：
+// parentElem.removeChild(elem) - 直接从 parentElem 中移除 elem
+// parentElem.replaceChild(elem, currentElem) - 移除 elem，并用 currentElem 替换它
 
-// Note: If you want to move an element, you don’t have to remove it first.
-// elem.appendChild/insertBefore remove elem from it’s previous place automatically.
-// The following example moves the last child to the top of children list:
+// 注：当你想要移动一个节点的时候，并不需要先移除它。
+// elem.appendChild/insertBefore 方法会先移除 DOM
+// 下面这个例子将最后一个元素插入到首位：
 var first = document.body.children[0];
 var last = document.body.children[1];
 document.body.insertBefore(last, first);
-// The removal occurs automatically when insertion methods are called for a node which already has a parent.
+// 当针对一个已经有父节点的元素调用这些方法时，会先自动移除掉它
 
-// insertAfter custom function
+// 自定义 insertAfter 方法
 var elem = document.createElement('div');
 elem.innerHTML = '**Child**';
 function insertAfter(elem, refElem) {
@@ -216,16 +238,17 @@ insertAfter(elem, document.body.firstChild);
 insertAfter(elem, document.body.lastChild);
 
 // Gotcha
-// For an arbitrary document, we do the following:
-var aList1 = document.getElementsByTagName('a');
-var aList2 = document.querySelectorAll('a');
+// 对任意的 document，尝试做如下事：
+var aList1 = document.getElementsByTagName('a'); // 若 DOM 改变，则数据也会改变
+var aList2 = document.querySelectorAll('a'); // 获取之后，新增 DOM 不会改变其数据
 document.body.appendChild(document.createElement('a'));
-alert(aList1.length - aList2.length);
+alert(aList1.length - aList2.length); // 1
 
-// What will be the output? Why?
+// 输入为 1
+// 为毛是这样的输出？
 // Solution
-// The output will be 1, because getElementsByTagName is a live collection, which gets auto populated with the new a. It’s length increases by 1.
-// Contrary to this, querySelector returns a static list of nodes. It references same elements no matter what we do with the document. So, it’s length remains the same.
+// getElementsByTagName 是会动态变化的，在新增一个 a DOM 之后，它会自动增加 1
+// 反之，querySelector 返回一个静态数据，在获取到结果之后，无论我们对 DOM 进行什么操作，结果不会再改变
 
 // TABLE
 //<table>
@@ -250,7 +273,7 @@ var select = form.elements.genre;
 var value = select.options[select.selectedIndex].value;
 alert(value); // blues
 
-// The SELECT also provides selectedIndex property which keeps the index of the selected option. Useful if the select is not multiple.
+// SELECT 提供了名为 selectedIndex 的属性，代表当前被选择的 option 所处的 index。当只存在单个 select 的时候很好用
 //<form name="temp">
 //  <select name="genre">
 //    <option name="blues" value="blues">Soft blues</option>
