@@ -1,14 +1,15 @@
 /**
- * Closures
+ * 闭包
  *
- * Closure is when a function 'remembers' its lexical scope even when the function is executing outside that lexical scope. ~ Kyle Simpson
+ * 闭包是指，当函数在其作用域外部的位置调用时，也还能 “记住” 定义时的作用域 ~ Kyle Simpson
  *
+ * 当你想要隐藏函数在功能上的实现，但依旧展现其接口和扩展性时，闭包就能发挥很好的作用。
  * Closures are useful in hiding the implementation of functionality while still revealing the interface.
  *
- * Why use Closures?
+ * 为什么要使用闭包？
  * http://howtonode.org/why-use-closure
  *
- * @Reference:
+ * @参考资料:
  * http://stackoverflow.com/questions/2728278/what-is-a-practical-use-for-a-closure-in-javascript
  * https://medium.freecodecamp.com/lets-learn-javascript-closures-66feb44f6a44#.lwnf9bay4
  * http://www.bennadel.com/blog/2134-a-random-exploration-of-closure-use-cases-in-javascript.htm
@@ -17,7 +18,7 @@
  * https://www.safaribooksonline.com/library/view/javascript-the-good/9780596517748/ch04s15.html
  */
 
-// EXAMPLE 1
+// 例1
 function foo() {
   var bar = 'bar';
 
@@ -29,39 +30,40 @@ function foo() {
 }
 
 function bam(baz) {
-  // Prints 'bar' -- because baz() which is called inside bam's lexical scope has access to `bar` inside foo()
+  // 输出 'bar'
+  // baz() 在 bam 方法内调用，而 bam 可以获取到 foo 内的作用域
   baz();  // bar
 }
 foo();
 
-// EXAMPLE 2
+// 例2
 (function foo() {
   var bar = 'bar';
 
   setTimeout(function () {
-    console.log(bar); // Prints `bar` -- Due to closures - coz setTimout's callback fn has access to foo's lexical scope.
+    console.log(bar); // 输出 `bar` -- 由于闭包的作用，setTimout 的回调函数内可以获取到 foo 里的作用域
   }, 1000)
 })();
 
-// EXAMPLE 3
+// 例3
 (function foo() {
   var bar = 'bar';
 
   $('#btn').click(function () {
-    console.log(bar); // Prints `bar`
+    console.log(bar); // 输出 `bar`
   });
 })();
 
 
-// PRACTICAL USE CASES
+// 实际用例
 
-// 1. To enforce public/private methods. [Classic Module Pattern]
+// 1. 执行 public/private 方法. [Classic Module Pattern]
 
 /**
- * As you can see there, a is now an object, with a method publicfunction ( a.publicfunction() ) which calls privatefunction,
- * which only exists inside the closure.
+ * 如你所见，a 是一个对象，并拥有一个公共方法（ a.publicFunction ），
+ * 而 a.publicFunction() 则调用私有方法 privateFunction，privateFunction 内就可以获取到封闭的作用域
  *
- * You can NOT call privatefunction directly (i.e. a.privatefunction() ), just publicfunction().
+ * 你无法直接调用 privatefunction 方法（比如这样：a.privatefunction() ）
  */
 var a = (function () {
   var privateFunction = function () {
@@ -77,13 +79,10 @@ var a = (function () {
 a.publicFunction(); // Accessed private method.
 
 /**
- * For example, imagine you are writing a class of date utility methods and you want to allow users to lookup
- * weekday names by index but you don't want them to be able to modify the array of names you use under the hood.
+ * 假设你在写一个关于日期的类，可以让用户通过 index 来获取周的名称，但同时也不想让用户修改周名称组成的数组
  *
- * In dateUtil(), note that the days array could simply be stored as a property of the dateUtil object but then it would be
- * visible to users of the script and they could even change it if they wanted, without even needing your source code.
- * However, since it's enclosed by the anonymous function which returns the date lookup function it is
- * only accessible by the lookup function so it is now tamper-proof.
+ * 在 dateUtil() 里，days 数组可以作为对象的属性存在，但是这样的话它就可以被用户轻易获取到，并能够被随意更改。
+ * 但如果通过一个匿名函数的闭包，它就只能在 weekdayShort 函数内部被调用，而外界无法获取并干扰。
  */
 
 var dateUtil = {
@@ -98,23 +97,23 @@ var dateUtil = {
   }())
 };
 
-// 2. To create memoizers.
+// 2. 储存数据
 
 /**
- * You've probably heard of or even implemented the Fibonacci series function a couple of times.
+ * 你可能已经听说过，甚至已经实际使用过斐波纳契数列函数了。
  *
- * Closures can turn a simple Fibonacci function into a masterpiece.
+ * 闭包可以轻易的创建一个强大的斐波纳契数列函数
  *
- * We are going to start with a classic Fibonacci implementation.
+ * 我们先了来看下传统的 斐波纳契数列函数：fibonacci
  */
 var fibonacci = function (n) {
   return n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2);
 };
 
 /**
- * This one works fine but is awfully slow. It's computing the same value several times.
+ * fibonacci 工作起来没问题，但效率极其低下。它将同样的值计算了很多遍
  *
- * We can use a memoizer (a closure) to save each computed value for future uses.
+ * 我们可以利用一个储存器来将获取的结果储存起来（通过闭包）
  */
 var fibonacci = (function (  ) {
   var memo = [0, 1];

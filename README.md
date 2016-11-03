@@ -19,6 +19,7 @@
 - [Apply 和 Call 方法](js/call-apply-function.js)
 - [Bind 方法](js/bind-function.js)
 - [按位操作符](js/bitwise-operators.js)
+- [闭包](js/closures.js)
 
 ## Todo
 
@@ -33,7 +34,7 @@
 - [x] [Apply & Call function](js/call-apply-function.js)
 - [x] [Bind function](js/bind-function.js)
 - [x] [Bitwise operators](js/bitwise-operators.js)
-- [ ] [Closures](js/closures.js)
+- [x] [Closures](js/closures.js)
 - [ ] [Coercion](js/coercion.js)
 - [ ] [Conditional function declaration](js/conditional-function-declaration.js)
 - [ ] [Currying](js/currying.js)
