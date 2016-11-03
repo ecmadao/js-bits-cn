@@ -22,6 +22,7 @@
 - [闭包](js/closures.js)
 - [强制类型转换](js/coercion.js)
 - [条件表达式内函数声明](js/conditional-function-declaration.js)
+- [柯里化](js/currying.js)
 
 ## Todo
 
@@ -39,7 +40,7 @@
 - [x] [Closures](js/closures.js)
 - [x] [Coercion](js/coercion.js)
 - [x] [Conditional function declaration](js/conditional-function-declaration.js)
-- [ ] [Currying](js/currying.js)
+- [x] [Currying](js/currying.js)
 - [ ] [DOM](js/dom.js)
 - [ ] [Event Bubbling](js/event-bubbling.js)
 - [ ] [Event Delegation](js/event-delegation.js)
