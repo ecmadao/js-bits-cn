@@ -24,6 +24,7 @@
 - [条件表达式内函数声明](js/conditional-function-declaration.js)
 - [柯里化](js/currying.js)
 - [DOM API 操作](js/dom.js)
+- [事件冒泡](js/event-bubbling.js)
 
 ## Todo
 
@@ -43,7 +44,7 @@
 - [x] [Conditional function declaration](js/conditional-function-declaration.js)
 - [x] [Currying](js/currying.js)
 - [x] [DOM](js/dom.js)
-- [ ] [Event Bubbling](js/event-bubbling.js)
+- [x] [Event Bubbling](js/event-bubbling.js)
 - [ ] [Event Delegation](js/event-delegation.js)
 - [ ] [Event Handling](js/event-handling.js)
 - [ ] [Factory Functions](js/factory-functions.js)

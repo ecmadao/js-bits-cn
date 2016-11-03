@@ -1,60 +1,59 @@
 /**
- * Event bubbling and capturing
+ * 事件冒泡和捕获
  *
- * @Reference:
+ * @参考资料:
  * http://javascript.info/tutorial/bubbling-and-capturing
  * http://stackoverflow.com/questions/4616694/what-is-event-bubbling-and-capturing
  * http://javascript.info/tutorial/mouse-events
  *
  */
 
-// Stopping event bubble
+// 阻止事件冒泡
 element.onclick = function (event) {
-  event = event || window.event; // cross-browser event
+  event = event || window.event; // 确保跨浏览器兼容性
   if (event.stopPropagation) {
-    // W3C standard variant
+    // W3C 标准
     event.stopPropagation()
   } else {
-    // IE variant
+    // IE 标准
     event.cancelBubble = true
   }
 };
 
-// If the element has several handlers on same event, then handlers are independent. All of them get executed..
-// For example, if there are two onclick handlers on the same link, then stopping bubbling in one of them has no effect on the other one.
-// Also, the browser doesn’t guarantee the order in which they trigger.
+// 如果某个元素对于一个事件绑定了多个相应函数，则它们各个独立，并且在触发事件时，都会被执行。
+// 例如，某个链接上绑定了两个不同的点击事件，那么其中一个阻止事件冒泡，对另外一个没有影响。
+// 同样的，浏览器也无法保障它们调用的顺序。
 
-// CAPTURING
-// In all browsers, except IE<9, there are two stages of event processing.
-// The event first goes down - that’s called capturing, and then bubbles up.
-// This behavior is standardized in W3C specification.
+// 事件捕获
+// 在除了 <IE9 的浏览器里，事件处理有两个阶段：
+// 首先，事件向下传递 - 称为捕获；其次，事件向上冒泡。
+// 这样的事件处理机制也符合 W3C 的标准规范。
 
-// All methods of event handling ignore the capturing phase.
-// Using addEventListener with last argument true is only the way to catch the event at capturing.
+// 所有的事件处理都忽略了事件捕获阶段
+// 只有通过给 addEventListener 函数的最后一个参数传递 true，才能在捕获阶段触发事件处理
 
 // elem.addEventListener( type, handler, phase );
 // phase = true
 // The handler is set on the capturing phase.
 // phase = false
 
-// The default browser action
+// 阻止浏览器默认事件
 
-// 1) Event special method event.preventDefault() for W3C-compliant browsers and event.returnValue = false for IE<9.
-// Or, in a single line:
+// 1) 对于支持 W3C 规范的浏览器，可通过 event.preventDefault() 阻止触发默认事件；而对于 <IE9 的浏览器，则需要 event.returnValue = false
+// 或者用一行代码兼容：
 event.preventDefault ? event.preventDefault() : (event.returnValue = false);
 
-// 2) Return false from the handler
+// 2) 在事件处理中返回 false
 element.onclick = function (event) {
   return false;
 };
 
 // Note: Bubbling and default action
-// Browser default action is independent from bubbling.
-// Cancelling default action does not stop bubbling and vise versa.
-// However, jQuery has it’s own event-handling layer. It wraps over the handler,
-// and if the handler returns false, then both bubbling is stopped and the default action is prevented.
+// 浏览器的默认事件独立于事件冒泡
+// 阻止默认事件，并不能阻止事件冒泡，这点反过来也一样。
+// 但是，jQuery 有自己的事件处理层，它包裹了用户定义的事件处理函数，当处理函数返回 false 时，既可以阻止事件冒泡，又可以阻止默认事件
 
 // Sample Events
-document.getElementById('btn').onclick(alert('Works')); // Triggered by a mouse click: mousedown and then mouseup over an element
-document.getElementById('btn').oncontextmenu(alert('Works')); // Triggered by a right-button mouse click over an element.
-document.getElementById('btn').dblclick(alert('Works'));  // Triggered by two clicks within a short time over an element
+document.getElementById('btn').onclick(alert('Works')); // 追踪（左键）点击事件：mousedown 然后 mouseup
+document.getElementById('btn').oncontextmenu(alert('Works')); // 追踪右键点击事件
+document.getElementById('btn').dblclick(alert('Works'));  // 追踪双击事件
