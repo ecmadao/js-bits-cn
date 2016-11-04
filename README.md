@@ -29,7 +29,8 @@
 - [事件处理](js/event-handling.js)
 - [工厂方法](js/factory-functions.js)
 - [JavaScript 中的数字类型（浮点数）](js/floating-point-precision.js)
-- [for..in 循环 和 hasOwnProperty](js/for-in-with-hasOwnProperty.js)
+- [for..in 循环和 hasOwnProperty](js/for-in-with-hasOwnProperty.js)
+- [getter 方法和 setter 方法](js/getters-setters.js)
 
 ## Todo
 

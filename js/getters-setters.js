@@ -1,15 +1,14 @@
 /**
- * Getters and Setters
+ * Getters 和 Setters
  *
- * Getters and setters have been available in Chrome since day one, in Firefox since version 2,
- * version 3 of Safari, Internet Explorer 9 and up, and in all mobile browsers.
+ * 从第一天起，getter 和 setter 就被 chrome 支持，而 Firefox2 及以上，Safari3 及以上，IE9 及以上，和所有的手机浏览器也可以支持。
  *
- * @Reference
+ * @参考资料
  * http://engineering.wix.com/2015/04/21/javascript-the-extra-good-parts/
  * http://javascriptplayground.com/blog/2013/12/es5-getters-setters/
  */
 
-// Getters and Setters as explicit methods
+// 显式的使用 getter 和 setter
 (function () {
   function wrapValue(value) {
     return {
@@ -23,12 +22,12 @@
   }
 
   var x = wrapValue(5);
-  console.log(x.getValue()); // output 5
+  console.log(x.getValue()); // 输出 5
   x.setValue(7);
-  console.log(x.getValue()); // output 7
+  console.log(x.getValue()); // 输出 7
 })();
 
-// Using getters and setters -- Conventional way
+// getter 和 setter 的传统使用方式
 (function () {
   function wrapValue(_value) {
     return {
@@ -42,15 +41,15 @@
   }
 
   var x = wrapValue(5);
-  console.log(x.value); // output 5
+  console.log(x.value); // 输出 5
   x.value = 7;
-  console.log(x.value); // output 7
+  console.log(x.value); // 输出 7
 })();
 
-// Using getters and setters -- Using Object.defineProperty
-// When you define a property this way, you can do much more than just define a setter or getter. You may also pass following keys:
-// configurable (false by default): if this is true, the property's configuration will be modifiable in future.
-// enumerable (false by default): if true, the property will appear when looping over the object (for (var key in obj)).
+// 通过 Object.defineProperty 定义 getter 和 setter
+// 当你通过 Object.defineProperty 来定义属性时，不仅仅可以定义 setter 和 getter，还可以传入其他 key：
+// configurable（默认为 false）：如果为 true，则这个属性的配置在定义之后可以被修改
+// enumerable（默认为 false）：如果为 true，则这个属性可以在遍历时获取到（比如 for...in）
 (function() {
   var person = {
     firstName: 'Jimmy',
