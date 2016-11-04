@@ -1,36 +1,36 @@
 /**
- * Method/Function Overloading
- * A way of mapping a single function call to multiple functions based upon the arguments they accept
+ * 方法重载
+ * 一个函数，在调用时根据其接受参数个数的不同，执行不同的方法。
+ * 译者注：不建议使用
  *
- * @Reference:
+ * @参考资料：
  * http://ejohn.org/blog/javascript-method-overloading/
  * http://ejohn.org/apps/learn/#90
  *
- * Explanation:
+ * 解释说明：
  * http://stackoverflow.com/a/30989908/1672655
  * http://stackoverflow.com/a/18122417/1672655
  *
- * Best practises: http://stackoverflow.com/questions/456177/function-overloading-in-javascript-best-practices
+ * 最佳实践： http://stackoverflow.com/questions/456177/function-overloading-in-javascript-best-practices
  */
 
 function addMethod(object, name, fn) {
 
   var old = object[name];
+  // 通过 name 获取旧的方法
+  // 当第一次调用时可能为 undefined
   // Get the old function corresponding to this name. Will be "undefined"
   // the first time "addMethod" is called.
 
   object[name] = function () {
-    // Now, assign object[name] to a new function.
-    // The critical part of this function is that "old" is captured inside of
-    // this function and will be available any time the function is called.
+    // 然后给 object[name] 赋予新方法
+    // 非常重要的一点是，原有的方法被缓存起来了（old），并且随时可以被调用到
 
     if (fn.length == arguments.length) {
-      // if the number of parameters belonging to the function we've added
-      // matches what was passed in, call "fn"
+      // 如果新函数接收到的参数数目和 fn 所需的参数数目一样，则调用 fn 方法
       return fn.apply(this, arguments);
     } else if (typeof old == 'function') {
-      // Otherwise if there's another function with this name
-      // call it instead.
+      // 否则，如果之前缓存的 old 是 function，则调用
       return old.apply(this, arguments);
     }
   };
