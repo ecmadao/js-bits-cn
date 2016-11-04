@@ -56,7 +56,7 @@
 - [x] [Factory Functions](js/factory-functions.js)
 - [x] [Floating point precision](js/floating-point-precision.js)
 - [x] [for-in with hasOwnProperty](js/for-in-with-hasOwnProperty.js)
-- [ ] [Getters and Setters](js/getters-setters.js)
+- [x] [Getters and Setters](js/getters-setters.js)
 - [ ] [Logical operations with string](js/logical-operations-with-string.js)
 - [ ] [Method Overloading](js/method-overloading.js)
 - [ ] [Mixins](js/mixins.js)
