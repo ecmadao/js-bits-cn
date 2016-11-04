@@ -27,6 +27,7 @@
 - [事件冒泡](js/event-bubbling.js)
 - [事件委托](js/event-delegation.js)
 - [事件处理](js/event-handling.js)
+- [工厂方法](js/factory-functions.js)
 
 ## Todo
 
@@ -49,7 +50,7 @@
 - [x] [Event Bubbling](js/event-bubbling.js)
 - [x] [Event Delegation](js/event-delegation.js)
 - [x] [Event Handling](js/event-handling.js)
-- [ ] [Factory Functions](js/factory-functions.js)
+- [x] [Factory Functions](js/factory-functions.js)
 - [ ] [Floating point precision](js/floating-point-precision.js)
 - [ ] [for-in with hasOwnProperty](js/for-in-with-hasOwnProperty.js)
 - [ ] [Getters and Setters](js/getters-setters.js)
