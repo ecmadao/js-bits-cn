@@ -28,6 +28,7 @@
 - [事件委托](js/event-delegation.js)
 - [事件处理](js/event-handling.js)
 - [工厂方法](js/factory-functions.js)
+- [JavaScript 中的数字类型（浮点数）](js/floating-point-precision.js)
 
 ## Todo
 
@@ -51,7 +52,7 @@
 - [x] [Event Delegation](js/event-delegation.js)
 - [x] [Event Handling](js/event-handling.js)
 - [x] [Factory Functions](js/factory-functions.js)
-- [ ] [Floating point precision](js/floating-point-precision.js)
+- [x] [Floating point precision](js/floating-point-precision.js)
 - [ ] [for-in with hasOwnProperty](js/for-in-with-hasOwnProperty.js)
 - [ ] [Getters and Setters](js/getters-setters.js)
 - [ ] [Logical operations with string](js/logical-operations-with-string.js)
