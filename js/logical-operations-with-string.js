@@ -1,5 +1,5 @@
 /**
- * Logical Operator with string, when true returns the string.
+ * 带有 string 的逻辑操作
  */
 
 (function () {
@@ -7,7 +7,7 @@
   var b = 'Yes';
   var c = 'It\'s me';
 
-  console.log(a && b);  // Prints 'Yes'
-  console.log(a && b && c); // Prints 'It's me'
-  console.log(a && b || c); // Prints 'Yes'
+  console.log(a && b);  // 输出 'Yes'
+  console.log(a && b && c); // 输出 'It's me'
+  console.log(a && b || c); // 输出 'Yes'
 })();

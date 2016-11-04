@@ -31,6 +31,7 @@
 - [JavaScript 中的数字类型（浮点数）](js/floating-point-precision.js)
 - [for..in 循环和 hasOwnProperty](js/for-in-with-hasOwnProperty.js)
 - [getter 方法和 setter 方法](js/getters-setters.js)
+- [带有 string 的逻辑操作](js/logical-operations-with-string.js)
 
 ## Todo
 
@@ -57,7 +58,7 @@
 - [x] [Floating point precision](js/floating-point-precision.js)
 - [x] [for-in with hasOwnProperty](js/for-in-with-hasOwnProperty.js)
 - [x] [Getters and Setters](js/getters-setters.js)
-- [ ] [Logical operations with string](js/logical-operations-with-string.js)
+- [x] [Logical operations with string](js/logical-operations-with-string.js)
 - [ ] [Method Overloading](js/method-overloading.js)
 - [ ] [Mixins](js/mixins.js)
 - [ ] [new keyword](js/new-keyword.js)
