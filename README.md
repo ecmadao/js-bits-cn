@@ -33,6 +33,7 @@
 - [getter 方法和 setter 方法](js/getters-setters.js)
 - [带有 string 的逻辑操作](js/logical-operations-with-string.js)
 - [方法重载](js/method-overloading.js)
+- [JavaScript 中的 Mixins](js/mixins.js)
 
 ## Todo
 
@@ -61,7 +62,7 @@
 - [x] [Getters and Setters](js/getters-setters.js)
 - [x] [Logical operations with string](js/logical-operations-with-string.js)
 - [x] [Method Overloading](js/method-overloading.js)
-- [ ] [Mixins](js/mixins.js)
+- [x] [Mixins](js/mixins.js)
 - [ ] [new keyword](js/new-keyword.js)
 - [ ] [Number Max Min val](js/number-maxmin-val.js)
 - [ ] [Object clone](js/object-clone.js)
