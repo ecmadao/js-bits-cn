@@ -34,6 +34,7 @@
 - [带有 string 的逻辑操作](js/logical-operations-with-string.js)
 - [方法重载](js/method-overloading.js)
 - [JavaScript 中的 Mixins](js/mixins.js)
+- [关于 new 关键字的一些事](js/new-keyword.js)
 
 ## Todo
 
@@ -63,7 +64,7 @@
 - [x] [Logical operations with string](js/logical-operations-with-string.js)
 - [x] [Method Overloading](js/method-overloading.js)
 - [x] [Mixins](js/mixins.js)
-- [ ] [new keyword](js/new-keyword.js)
+- [x] [new keyword](js/new-keyword.js)
 - [ ] [Number Max Min val](js/number-maxmin-val.js)
 - [ ] [Object clone](js/object-clone.js)
 - [ ] [Object constructor](js/object-constructor.js)
