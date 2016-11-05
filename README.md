@@ -35,6 +35,7 @@
 - [方法重载](js/method-overloading.js)
 - [JavaScript 中的 Mixins](js/mixins.js)
 - [关于 new 关键字的一些事](js/new-keyword.js)
+- [数字的最大和最小值](js/number-maxmin-val.js)
 
 ## Todo
 
@@ -65,7 +66,7 @@
 - [x] [Method Overloading](js/method-overloading.js)
 - [x] [Mixins](js/mixins.js)
 - [x] [new keyword](js/new-keyword.js)
-- [ ] [Number Max Min val](js/number-maxmin-val.js)
+- [x] [Number Max Min val](js/number-maxmin-val.js)
 - [ ] [Object clone](js/object-clone.js)
 - [ ] [Object constructor](js/object-constructor.js)
 - [ ] [Object create()](js/object-create.js)

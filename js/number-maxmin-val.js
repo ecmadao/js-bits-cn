@@ -1,5 +1,5 @@
 /**
- * Native JS
+ * 原生 JS
  *
  * Number.MAX_VALUE and Number.MIN_VALUE
  *
