@@ -40,6 +40,7 @@
 - [详解对象的创建（构造方法和原型链）](js/object-constructor.js)
 - [定义属性（Object.defineProperty 方法）](js/object-defineProperty.js)
 - [冻结对象 （Object.freeze 方法）](js/object-freeze.js)
+- [通过 Object.keys 遍历对象的属性](js/object-keys.js)
 
 ## Todo
 
@@ -76,7 +77,7 @@
 - [x] [Object create()](js/object-create.js)
 - [x] [Object defineProperty](js/object-defineProperty.js)
 - [x] [Object freeze](js/object-freeze.js)
-- [ ] [Object keys](js/object-keys.js)
+- [x] [Object keys](js/object-keys.js)
 - [ ] [Object oriented concepts](js/object-oriented.js)
 - [ ] [Object prototype](js/object-prototype.js)
 - [ ] [Object references](js/object-reference.js)
