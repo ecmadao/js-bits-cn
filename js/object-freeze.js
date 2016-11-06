@@ -1,13 +1,12 @@
 /**
- * The Object.freeze() method freezes an object: that is, prevents new properties from being added to it;
- * prevents existing properties from being removed; and prevents existing properties, or their enumerability, configurability, or writability, from being changed.
- * In essence the object is made effectively immutable. The method returns the object being frozen.
+ * Object.freeze()
+ * 这个方法将冻结一个对象，这意味着，被冻结的对象无法添加新属性；无法移除已有属性；无法修改属性的属性（可遍历性/配置性/可写性）
+ * 从本质上讲就是让对象不可变了。
  *
- * Gotcha:
- * If the frozen object has values that are objects, they can still be modified, unless they are frozen as well.
- * The freeze is SHALLOW.
+ * 注意：
+ * 如果一个冻结的对象内部有属性的值是其他对象，则那些对象还是可以修改的，除非他们也被冻结。即是说，freeze 方法只是浅冻结。
  *
- * @Reference:
+ * @参考资料:
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze
  * http://adripofjavascript.com/blog/drips/immutable-objects-with-object-freeze.html
  *
@@ -18,26 +17,26 @@ var obj = {
   foo: 'bar'
 };
 
-// New properties may be added, existing properties may be changed or removed
+// 加入新属性、修改旧属性，并删除了一个旧属性
 obj.foo = 'baz';
 obj.lumpy = 'woof';
 delete obj.prop;
 
-// Freeze
+// 冻结对象
 Object.freeze(obj);
 
-// Check if frozen
+// 检查是否已冻结
 console.log(Object.isFrozen(obj) === true); // True
 
-// Now any changes will fail (throw errors in strict mode).
-obj.foo = 'quux'; // silently does nothing
-obj.quaxxor = 'the friendly duck'; // silently doesn't add the property
+// 然后之前的操作就没有作用了（在严格模式下会抛出错误）
+obj.foo = 'quux'; // 没用哒
+obj.quaxxor = 'the friendly duck'; // 也是没用哒
 
 
 
 /**
- * Freeze is shallow.
- * Let's make a deepFreeze() function
+ * freeze 是浅冻结，接下来我们尝试创建一个可以深度冻结的方法
+ * deepFreeze()
  */
 
 obj1 = {
@@ -49,26 +48,25 @@ obj1.internal.a = 'aValue';
 
 console.log(obj1.internal.a); // aValue
 
-// To make the object fully immutable, freeze each object in obj1
+// 如果要深度冻结一个对象，则需要冻结对象上的每一个对象
 function deepFreeze(obj) {
-  // Retrieve the property names defined on obj
+  // 获取 obj 自身拥有的属性
   var propNames = Object.getOwnPropertyNames(obj);
 
-  // Freeze properties before freezing self
+  // 在冻结对象之前，依次冻结它内部的每个对象
   propNames.forEach(function (name) {
     var prop = obj[name];
 
-    // Freeze prop if it is an object
+    // 如果属性值是个对象，则冻结通过递归来它
     if (typeof prop == 'object' && prop !== null && !Object.isFrozen(prop)) {
       deepFreeze(prop);
     }
   });
 
-  // Freeze self
   return Object.freeze(obj);
 }
 
-// Test deepFreeze
+// 测试 deepFreeze
 var obj2 = {
   internal: {}
 };
