@@ -2,22 +2,21 @@
  * Object.defineProperty()
  *
  * Enumerable:
- * I can access to all of them using a for..in loop. Also, enumerable property keys of an object are returned using Object.keys method.
+ * 设置为 true 时，可以通过 for..in 循环 和 Object.keys 方法获取到该属性
  *
  * Writable:
- * I can modify their values, I can update a property just assigning a new value to it: ob.a = 1000;
+ * 可以更改属性的值
  *
  * Configurable:
- * I can modify the behavior of the property, so I can make them non-enumerable, non-writable or even non-configurable
- * if I feel like doing so. Configurable properties are the only ones that can be removed using the delete operator.
+ * 可以配置属性的行为。Configurable 是唯一一个可以通过 delete 删除掉的属性
  *
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
+ * @参考资料： https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
  * http://x-team.com/2015/02/es5-object-defineproperty-method/
  * http://arqex.com/967/javascript-properties-enumerable-writable-configurable
  */
 
 var ob = {};
-// Adding a property to ob using Object.defineProperty
+// 通过 Object.defineProperty 给 ob 对象新建一个属性
 Object.defineProperty(ob, 'c', {
   value: 3,
   enumerable: false,
@@ -30,9 +29,8 @@ console.log(ob.c); // => 3
 Object.getOwnPropertyDescriptor(ob, 'c');
 // => {value: 3, enumerable: false, writable: false, configurable: false}
 
-// It is also possible to define the properties on object creation if you instantiate it using the method Object.create( prototype,
-// properties ). It accepts an object with property descriptors as the second parameter, and it can be used as follows
-
+// 除此以外，还可以通过 Object.create( prototype, properties ) ，在创建对象的时候赋予其属性。
+// 使用方式如下：
 var ob = Object.create(Object.prototype, {
   a: {writable: true, enumerable: true, value: 1},
   b: {enumerable: true, value: 2}
@@ -45,9 +43,9 @@ var ob = Object.create(Object.prototype, {
 });
 console.log(ob); // => {a:1, b:2}
 
-// Our task is to create a Person constructor which takes two parameters: firstName and lastName.
-// Our object will expose four attributes: firstName, lastName, fullName and species.
-// The first three will react to changes, and the last one species will have a constant value of 'human'
+// 我们的目标是创建一个 Person 构造函数，它接收两个参数：firstName 和 lastName
+// 这个对象会暴露出四个属性：firstName, lastName, fullName 和 species
+// 前三个属性都是可变的，而最后一个则是常量 “human”
 
 // Object.defineProperty (> IE8)
 var Person = function (first, last) {
@@ -90,7 +88,7 @@ console.log(woman.firstName); // 'Yulia'
 console.log(woman.lastName); // 'Khowalski'
 console.log(woman.fullName); // 'Yulia Khowalski'
 woman.species = 'fish';
-console.log(woman.species); // human - No, you can't change this properity.
+console.log(woman.species); // human - 因为 writable 为 false，所以无法修改
 
 /*
  * Change fullName

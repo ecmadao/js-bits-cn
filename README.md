@@ -38,6 +38,7 @@
 - [数字的最大和最小值](js/number-maxmin-val.js)
 - [对象的克隆](js/object-clone.js)
 - [详解对象的创建（构造方法和原型链）](js/object-constructor.js)
+- [Object defineProperty](js/object-defineProperty.js)
 
 ## Todo
 
@@ -72,7 +73,7 @@
 - [x] [Object clone](js/object-clone.js)
 - [x] [Object constructor](js/object-constructor.js)
 - [x] [Object create()](js/object-create.js)
-- [ ] [Object defineProperty](js/object-defineProperty.js)
+- [x] [Object defineProperty](js/object-defineProperty.js)
 - [ ] [Object freeze](js/object-freeze.js)
 - [ ] [Object keys](js/object-keys.js)
 - [ ] [Object oriented concepts](js/object-oriented.js)
