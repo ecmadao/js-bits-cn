@@ -37,6 +37,7 @@
 - [关于 new 关键字的一些事](js/new-keyword.js)
 - [数字的最大和最小值](js/number-maxmin-val.js)
 - [对象的克隆](js/object-clone.js)
+- [详解对象的创建（构造方法和原型链）](js/object-constructor.js)
 
 ## Todo
 
@@ -69,8 +70,8 @@
 - [x] [new keyword](js/new-keyword.js)
 - [x] [Number Max Min val](js/number-maxmin-val.js)
 - [x] [Object clone](js/object-clone.js)
-- [ ] [Object constructor](js/object-constructor.js)
-- [ ] [Object create()](js/object-create.js)
+- [x] [Object constructor](js/object-constructor.js)
+- [x] [Object create()](js/object-create.js)
 - [ ] [Object defineProperty](js/object-defineProperty.js)
 - [ ] [Object freeze](js/object-freeze.js)
 - [ ] [Object keys](js/object-keys.js)
