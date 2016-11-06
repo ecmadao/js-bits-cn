@@ -41,6 +41,7 @@
 - [定义属性（Object.defineProperty 方法）](js/object-defineProperty.js)
 - [冻结对象 （Object.freeze 方法）](js/object-freeze.js)
 - [通过 Object.keys 遍历对象的属性](js/object-keys.js)
+- [JavaScript 面向对象编程](js/object-oriented.js)
 
 ## Todo
 
@@ -78,7 +79,7 @@
 - [x] [Object defineProperty](js/object-defineProperty.js)
 - [x] [Object freeze](js/object-freeze.js)
 - [x] [Object keys](js/object-keys.js)
-- [ ] [Object oriented concepts](js/object-oriented.js)
+- [x] [Object oriented concepts](js/object-oriented.js)
 - [ ] [Object prototype](js/object-prototype.js)
 - [ ] [Object references](js/object-reference.js)
 - [ ] [OLOO pattern](js/oloo-pattern.js)

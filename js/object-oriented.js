@@ -1,43 +1,40 @@
 /**
- * Object Oriented Programming in JavaScript
+ * JavaScript 面向对象编程
  *
- * Prototype-based programming is an OOP model that doesn't use classes, but rather it first accomplishes the behavior of any class and then reuses it (equivalent to inheritance in class-based languages)
- * by decorating (or expanding upon) existing prototype objects. (Also called classless, prototype-oriented, or instance-based programming.)
+ * 基于原型链的编程模式其实就是一种面向对象的模式，只是没有运用类的概念。但通过装饰或扩展原型链上的对象，可对方法和属性进行复用（也就相当于含有类的语言中，继承的概念）。因此，JavaScript 中的面向对象编程，也被叫做无类的、面向原型链的基于实例的编程。
  *
- * Inheritance
- * Inheritance is a way to create a class as a specialized version of one or more classes (JavaScript only supports single inheritance).
- * The specialized class is commonly called the child, and the other class is commonly called the parent.
- * In JavaScript you do this by assigning an instance of the parent class to the child class, and then specializing it.
- * In modern browsers you can also use Object.create to implement inheritance.
+ * 继承
+ * 继承是基于一个或多个类（JavaScript 中只支持单继承），创建自己的类的过程。
+ * 新建的类一般叫做子类，而被继承的类则叫做父类。
+ * 在 JavaScript 中，只要把父类的实例声明给子类就可以创建成功。在现代浏览器中，你可以通过 Object.create 方法来完成继承。
  *
- * Polymorphism
- * Polymorphism is the presentation of one interface for multiple data types.
- * For example, integers, floats, and doubles are implicitly polymorphic: regardless of their different types, they can all be added, subtracted, multiplied, and so on.
- * In the case of OOP, by making the class responsible for its code as well as its own data, polymorphism can be achieved in that each class has its own function that (once called) behaves properly for any object.
+ * 多态
+ * 多态是多种数据类型的接口展示。
+ * 例如，integer、float、double 数据就是隐式的多态：且不管它们不同的三种类型，它们都可以被求和、相减、求积等等。
+ * 在面向对象的理念里，每个类只对自己拥有的方法和代码负责，而通过多态，可以让每个类都有自己的方法。
  *
- * Encapsulation
- * Encapsulation is the packing of data and functions into one component (for example, a class) and then controlling access to that component to make a "blackbox" out of the object.
- * Because of this, a user of that class only needs to know its interface (that is, the data and functions exposed outside the class), not the hidden implementation.
- * This allows us to abstract or localize specific set of functionalities on objects.
+ * 封装
+ * 封装是将数据和方法打包进一个组件里（例如一个类），然后通过这个类控制其行为。
+ * 因此，使用这个类的时候，只需要知道它的接口就行（也就是说，必要的属性和方法要对外暴露）。
+ * 它使得我们可以编写高内聚的抽象化代码。
  *
- * Why Encapsulation?
- * When you simply want to create an object just to store some data, and it is the only object of its kind, you can use an object literal and create your object.
- * This is quite common and you will use this simple pattern often.
- * However, whenever you want to create objects with similar functionalities (to use the same methods and properties),
- * you encapsulate the main functionalities in a Function and you use that Function’s constructor to create the objects. This is the essence of encapsulation.
+ * 为什么要封装？
+ * 当你只是想创建一个储存数据的简单对象，而且这个对象只有它自己一类时，按照普通的方式来创建对象就好。
+ * 这种情况十分常见，你肯定也经常这么干。
+ * 但当你想创建有相似功能的对象（一样的属性和方法），你可以把主要功能封装到一个函数里，利用函数的构造方法去创建对象。这就是封装的本质了。
  *
- * @Reference:
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript
+ * @参考资料：
+ *  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript
  * http://javascriptissexy.com/oop-in-javascript-what-you-need-to-know/
- * http://stackoverflow.com/questions/8453887/why-is-it-necessary-to-set-the-prototype-constructor
- * http://www.toptal.com/javascript/javascript-prototypes-scopes-and-performance-what-you-need-to-know
+ *  http://stackoverflow.com/questions/8453887/why-is-it-necessary-to-set-the-prototype-constructor
+ *  http://www.toptal.com/javascript/javascript-prototypes-scopes-and-performance-what-you-need-to-know
  */
 
 /**
- * ENCAPSULATION
+ * 封装
  */
 
-// Combination Constructor/Prototype Pattern
+// 混合 构造方法/原型链 两种模式
 function User (theName, theEmail) {
   this.name = theName;
   this.email = theEmail;
@@ -45,11 +42,9 @@ function User (theName, theEmail) {
   this.currentScore = 0;
 }
 
-// Overwriting the prototype object -- Not recommended because it breaks the prototype chain
-// But, let's try it out for understanding purposes.
+// 复写原型对象 -- 并不建议，因为这样就打断了原型链。但为了加深理解我们就这么干吧。
 User.prototype = {
-  // The one disadvantage of overwriting the prototype is that the constructor property no longer points to the prototype,
-  // so we have to set it manually. Hence this line:
+  // 复写原型链的缺点之一就是，对象的构造方法已不再指向原型，因此我们必须手动进行设置。
   constructor: User,
   saveScore:function (theScoreToAdd)  {
     this.quizScores.push(theScoreToAdd)
@@ -80,44 +75,43 @@ secondUser.showNameAndScores(); //Peter Scores: 18
 /**
  * Object.create()
  *
- * The crux of the matter with this Object.create method is that you pass into it an object that you want to inherit from,
- * and it returns a new object that inherits from the object you passed into it.
+ * Object.create 接收一个对象作为被继承的对象，并返回一个全新的对象
  */
 Object.create = function (o) {
-  //It creates a temporary constructor F()​
+  // 创建一个临时的构造方法 F()
   function F() {
   }
-  //And set the prototype of the this constructor to the parametric (passed-in) o object​
-  //so that the F() constructor now inherits all the properties and methods of o​
+  // 并将构造方法的原型指向传入的参数 -- o 对象
+  // 因此 F() 构造方法现在继承了 o 的所有属性和方法
   F.prototype = o;
 
-  //Then it returns a new, empty object (an instance of F())​
-  //Note that this instance of F inherits from the passed-in (parametric object) o object. ​
-  //Or you can say it copied all of the o object's properties and methods​
+  // 最后，返回一个全新的对象（F 的实例）
+  // 要记住的是，F 的实例继承自传入的 o 对象
+  // 或者你可以说，它完全拷贝了 o 的属性和方法
   return new F();
 };
 
-// Sample usage
-// We have a simple cars object​
+// 使用案例
+// 一个简单的 cars 对象
 var cars = {
   type:"sedan",
   wheels:4
 };
 
-// We want to inherit from the cars object, so we do:​
-var toyota = Object.create (cars); // now toyota inherits the properties from cars​
+// 我们想要继承 cars 对象，所以：
+var toyota = Object.create (cars); // 现在 toyota 继承了 cars​
 console.log(toyota.type); // sedan
 
 
 /**
- * Object Orient programming example
+ * 面向对象编程的例子
  */
-// Define the Person constructor
+// 定义 Person 构造方法
 var Person = function(firstName) {
   this.firstName = firstName;
 };
 
-// Add a couple of methods to Person.prototype
+// 给 Person.prototype 增加方法
 Person.prototype.walk = function(){
   console.log("I am walking!");
 };
@@ -126,34 +120,31 @@ Person.prototype.sayHello = function(){
   console.log("Hello, I'm " + this.firstName);
 };
 
-// Define the Student constructor
+// 定义 Student 构造方法
 function Student(firstName, subject) {
-  // Call the parent constructor, making sure (using Function#call)
-  // that "this" is set correctly during the call
+  // 调用父类的构造方法，并利用 Function#call 来确保 this 作用域正确
   Person.call(this, firstName);
 
-  // Initialize our Student-specific properties
+  // 初始化属性
   this.subject = subject;
 }
 
-// Create a Student.prototype object that inherits from Person.prototype.
-// Note: A common error here is to use "new Person()" to create the
-// Student.prototype. That's incorrect for several reasons, not least
-// that we don't have anything to give Person for the "firstName"
-// argument. The correct place to call Person is above, where we call
-// it from Student.
-Student.prototype = Object.create(Person.prototype); // See note below
+// Student.prototype 对象继承自 Person.prototype
+// 注意：
+// 一个常见的错误是，利用 new Person() 来创建 Student.prototype
+// 这犯了几个错，其中一个就是，我们此时还不会给 Person 传入参数，因为无法通过 new 来创建
+Student.prototype = Object.create(Person.prototype);
 
-// Set the "constructor" property to refer to Student
+// 将原型链上的 constructor 指向 Student
 Student.prototype.constructor = Student;
 
-// Replace the "sayHello" method
+// 覆写 sayHello 方法
 Student.prototype.sayHello = function(){
   console.log("Hello, I'm " + this.firstName + ". I'm studying "
     + this.subject + ".");
 };
 
-// Add a "sayGoodBye" method
+// 新增 sayGoodBye 方法
 Student.prototype.sayGoodBye = function(){
   console.log("Goodbye!");
 };
@@ -164,8 +155,6 @@ student1.sayHello();   // "Hello, I'm Janet. I'm studying Applied Physics."
 student1.walk();       // "I am walking!"
 student1.sayGoodBye(); // "Goodbye!"
 
-// Check that instanceof works correctly
+// 检查原型链
 console.log(student1 instanceof Person);  // true
 console.log(student1 instanceof Student); // true
-
-
