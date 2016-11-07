@@ -1,17 +1,20 @@
 /**
- * Styling using Vanilla JS
+ * JavaScript 中的样式操作
  *
- * @Reference:
+ * @参考资料:
  * http://javascript.info/tutorial/view-and-position
  * http://stackoverflow.com/a/21064102/1672655
  * https://developer.mozilla.org/en/docs/Web/API/Element/classList
+ *
+ * 译者注：
+ * 补充一份中文资料：
+ * http://www.zhangxinxu.com/wordpress/2011/09/cssom%E8%A7%86%E5%9B%BE%E6%A8%A1%E5%BC%8Fcssom-view-module%E7%9B%B8%E5%85%B3%E6%95%B4%E7%90%86%E4%B8%8E%E4%BB%8B%E7%BB%8D/
  */
 
 // className
 document.body.className += ' class3';
 
 // classList
-
 var classList = document.body.classList,    // returns *live* DOMTokenList collection
     i;
 
@@ -29,7 +32,7 @@ for (i = 0; i < classList.length; i++) {
 document.body.style.backgroundColor = 'green';
 
 // cssText
-// style.cssText is the only way to add !important.
+// style.cssText 是增加 !important 的唯一方式
 var div = document.body.children[0];
 div.style.cssText = 'color: red !important; \
     background-color: yellow; \
@@ -37,7 +40,7 @@ div.style.cssText = 'color: red !important; \
     text-align: center; \
     blabla: 5; \
   ';
-// blabla is ignored
+// blabla 将被忽略
 alert(div.style.cssText);
 
 // Reading the style
@@ -52,72 +55,68 @@ alert(div.style.cssText);
 //  </body>
 
 // getComputedStyle
-// The syntax is: getComputedStyle(element, pseudo)
-// element - The element to get a styling for
+// 语法：getComputedStyle(element, pseudo)
+// element - 要被获取样式的 DOM 元素
 // pseudo - A pseudo-selector like ‘hover’ or null if not needed.
 var computedStyle = getComputedStyle(document.body, null);
 alert(computedStyle.marginTop);
 
-// CSS Box Model
+// CSS盒模型
 
 // clientWidth/Height
-// Size of the client area: content area with paddings, but without scrollbars.
+// 静态区域的大小，包含 padding，不包含 scrollbar
 
 // scrollWidth/Height
-// Content area width and height including the scrolled out part.
-// scrollWidth/Height is same as clientWidth/Height, but includes full scrollable area.
+// 返回 元素的内容区域宽度/高度 或 元素的本身的宽度/高度中更大的那个值
+// scrollWidth/Height 和 clientWidth/Height 很像，不过它包含了整个可滚动的区域
 element.style.height = element.scrollHeight + 'px';
 
 // scrollTop/scrollLeft
-// Size of scrolled out part: vertical and horizontal. The value is always in pixels.
-// scrollLeft/scrollTop are writeable
-// Unlike other properties, which are read-only, you can change scrollLeft/scrollTop, and the browser scrolls the element.
-// In standards mode, the scroll of the document is in document.documentElement.
-// The following code scrolls the document 10px down:
+// 垂直和水平方向上滚动的距离，单位为 px
+// scrollLeft/scrollTop 是可写的，你可以改变它们的值来改变浏览器的滚动距离
+// 在标准模式下，document 的滚动值在 document.documentElement 下
 document.documentElement.scrollTop += 10;
 
-//offsetWidth/Height
-//Outer box width/height, full size with borders, but without margins.
+// offsetWidth/Height
+// 测量元素的布局宽度/高度，包含 padding 和 border，不包含 margin
 
-//clientTop/Left
-//The indent of client area from box outer corner. In other words, the width of top/left border in pixels.
+// clientTop/Left
+// 内容区域的左上角相对于整个元素左上角的位置（包括边框）
 
-//offsetParent, offsetLeft/Top
-//Properties offsetLeft and offsetTop reflect a relative shift of an element from its offsetParent.
-//The offsetParent is the parent element in the sense of layout. For example, if an element is positioned absolutely, the offsetParent is not it’s DOM parent, but a nearest positioned element (or BODY).
-// We could use this to check if an elem is hidden:
+// offsetParent, offsetLeft/Top
+// offsetLeft 和 offsetTop 体现的是一个元素和它 offsetParent 元素的相对偏移量
+// 如果一个元素的定位为 绝对定位，则它的 offsetParent 不一定是父元素，而是最近的定位元素（没有的话则是 body）
+// 我们可以使用它来检查一个元素是否隐藏
 function isHidden(elem) {
   return !elem.offsetWidth && !elem.offsetHeight;
 }
-// SUMMARY
-// Link: http://javascript.info/files/tutorial/browser/dom/metricSummary.png
+// 总结
+// 戳这幅图: http://javascript.info/files/tutorial/browser/dom/metricSummary.png
 //
-//clientWidth/clientHeight - width/height of the visible in-border area (can be called a client area. The client area includes padding and doesn’t include scrollbars.
-//clientLeft/clientTop - left/top border width or, more generally, a shift of the client area from the top-left corner of the box.
-//scrollWidth/scrollHeight - width/height of the scrollable in-border area. Includes padding. Doesn’t include scrollbars.
-//scrollLeft/scrollTop - the width/height of the scrolled out part of the document, starting from the top-left corner.
-//offsetWidth/offsetHeight - the “outer” width/height of the box as seen from outside, excluding margins.
-//offsetParent - the nearest table-cell, body for static positioning or the nearest positioned element for other positioning types.
-//offsetLeft/offsetTop - the position in pixels of top-left corner of the box related to it’s offsetParent.
+// clientWidth/clientHeight - 可见区域 border 内的高度/宽度（这部分也叫静态区域，client area），它包含了 padding 但不包含 scrollbar 的宽度
+// clientLeft/clientTop - client area 到左上角的偏移量
+// scrollWidth/scrollHeight - 内容高度/宽度，包括 padding，不包括 scrollbar
+// scrollLeft/scrollTop - 滚动的水平/垂直距离
+// offsetWidth/offsetHeight - 测量元素的布局宽度/高度，包含 padding 和 border，不包含 margin
+// offsetParent - 返回一个指向最近的包含该元素的定位元素
+// offsetLeft/offsetTop - 距离 offsetParent 的偏移量
 
 // elem.getBoundingClientRect()
-// It returns a rectangle which encloses the element. The rectangle is given as an object with properties top, left, right, bottom.
-// Gotcha:
-// The coordinates are given relative to `window`, not the document**. For example, if you scroll this page,
-// so that the button goes to the window top, then its `top` coordinate becomes close to `0`, because it is given relative to window.
-// To calculate coordinates relative to the document that, we need to take page scroll into account.
+// 返回一个包含该元素的矩形，该矩形本质上是一个对象，包含了 top, left, right, bottom 等属性
+// 注：
+// 其坐标系相对于 window 而不是 document
+// 例如，如果你滚动页面，一个 button 滚动到 window 顶部了，那么通过 getBoundingClientRect 获取到的 top 应该接近于 0（因为相对于 window）；如果要基于 document 计算的话，就必须把滚动算进去
 function showRect(elem) {
   var r = elem.getBoundingClientRect();
   alert("Top/Left: " + r.top + " / " + r.left);
   alert("Right/Bottom: " + r.right + " / " + r.bottom);
 }
 
-// Coordinate calculator
-// The steps are:
-//  1) Get the enclosing rectangle.
-//  2) Calculate the page scroll. All browsers except IE<9 support `pageXOffset/pageYOffset`, and in IE when DOCTYPE is set, the scroll can be taken from documentElement(<html>), otherwise from `body` - so we take what we can.
-//  3) The document (`html` or `body`) can be shifted from left-upper corner in IE. Get the shift.
-//  4) Add scrolls to window-relative coordinates and subtract the shift of `html/body` to get coordinates in the whole document.
+// 计算坐标
+//  1) 获取最近的 rectangle
+//  2) 计算页面滚动。除 IE9 一下的浏览器外，滚动距离都可以通过 pageXOffset/pageYOffset 获取到；否则通过 scrollTop/scrollLeft
+//  3) 在 IE 中，document（html 或 body）会被偏移，需要获取这个偏移量
+//  4) 使用元素基于 window 的坐标，再跟之前几步计算出的结果结合起来，求得元素基于 document 的坐标
 function getOffsetRect(elem) {
   // (1)
   var box = elem.getBoundingClientRect();
