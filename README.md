@@ -49,6 +49,7 @@
 - [Shim vs Polyfill vs Monkey patch](js/shim-polyfill-monkeypatch.js)
 - [字符串方法](js/string-methods.js)
 - [JavaScript 中的样式操作](js/styling.js)
+- [this 关键字](js/this-keyword.js)
 
 ## Todo
 
@@ -94,4 +95,4 @@
 - [x] [Shim vs Polyfill vs Monkey patch](js/shim-polyfill-monkeypatch.js)
 - [x] [String methods](js/string-methods.js)
 - [x] [Styling](js/styling.js)
-- [ ] [this keyword](js/this-keyword.js)
+- [x] [this keyword](js/this-keyword.js)
