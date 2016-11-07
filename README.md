@@ -15,6 +15,7 @@
 - [强制类型转换](js/coercion.js)
 - [数字的最大和最小值](js/number-maxmin-val.js)
 - [带有 string 的逻辑操作](js/logical-operations-with-string.js)
+- [JavaScript 中的数字类型（浮点数）](js/floating-point-precision.js)
 
 ### Array
 
@@ -25,7 +26,6 @@
 - [理解 Array 中的 通过值传递 和 通过引用传递](js/array-pass-by-val-reference.js)
 - [Array 的 reduce() 方法](js/array-reduce.js)
 - [Array 的 slice() 和 splice() 方法](js/array-slice-splice.js)
-- [JavaScript 中的数字类型（浮点数）](js/floating-point-precision.js)
 
 ### DOM
 
