@@ -8,7 +8,16 @@
 
 ## Menu
 
-- [AMD、CommonJS 和 ES6 模块机制的使用](js/amd-commonjs-es6modules.js)
+### 基本
+
+- [字符串方法](js/string-methods.js)
+- [按位操作符](js/bitwise-operators.js)
+- [强制类型转换](js/coercion.js)
+- [数字的最大和最小值](js/number-maxmin-val.js)
+- [带有 string 的逻辑操作](js/logical-operations-with-string.js)
+
+### Array
+
 - [Array concat() 和 push() 方法](js/array-concat-push.js)
 - [Array every() 和 some() 方法](js/array-every-some.js)
 - [Array filter()、map() 和 reduce()](js/array-filter-map-reduce.js)
@@ -16,40 +25,51 @@
 - [理解 Array 中的 通过值传递 和 通过引用传递](js/array-pass-by-val-reference.js)
 - [Array 的 reduce() 方法](js/array-reduce.js)
 - [Array 的 slice() 和 splice() 方法](js/array-slice-splice.js)
-- [Apply 和 Call 方法](js/call-apply-function.js)
-- [Bind 方法](js/bind-function.js)
-- [按位操作符](js/bitwise-operators.js)
-- [闭包](js/closures.js)
-- [强制类型转换](js/coercion.js)
-- [条件表达式内函数声明](js/conditional-function-declaration.js)
-- [柯里化](js/currying.js)
+- [JavaScript 中的数字类型（浮点数）](js/floating-point-precision.js)
+
+### DOM
+
 - [DOM API 操作](js/dom.js)
+- [JavaScript 中的样式操作](js/styling.js)
 - [事件冒泡](js/event-bubbling.js)
 - [事件委托](js/event-delegation.js)
 - [事件处理](js/event-handling.js)
-- [工厂方法](js/factory-functions.js)
-- [JavaScript 中的数字类型（浮点数）](js/floating-point-precision.js)
-- [for..in 循环和 hasOwnProperty](js/for-in-with-hasOwnProperty.js)
-- [getter 方法和 setter 方法](js/getters-setters.js)
-- [带有 string 的逻辑操作](js/logical-operations-with-string.js)
-- [方法重载](js/method-overloading.js)
-- [JavaScript 中的 Mixins](js/mixins.js)
+
+### 作用域
+
+- [Apply 和 Call 方法](js/call-apply-function.js)
+- [Bind 方法](js/bind-function.js)
+- [闭包](js/closures.js)
+- [this 关键字](js/this-keyword.js)
+
+### 面向对象
+
 - [关于 new 关键字的一些事](js/new-keyword.js)
-- [数字的最大和最小值](js/number-maxmin-val.js)
 - [对象的克隆](js/object-clone.js)
 - [详解对象的创建（构造方法和原型链）](js/object-constructor.js)
-- [定义属性（Object.defineProperty 方法）](js/object-defineProperty.js)
-- [冻结对象 （Object.freeze 方法）](js/object-freeze.js)
-- [通过 Object.keys 遍历对象的属性](js/object-keys.js)
 - [JavaScript 面向对象编程](js/object-oriented.js)
 - [对象的原型链](js/object-prototype.js)
 - [对象的引用](js/object-reference.js)
 - [OLOO 设计模式探索](js/oloo-pattern.js)
+
+### 对象的属性
+
+- [定义属性（Object.defineProperty 方法）](js/object-defineProperty.js)
+- [冻结对象 （Object.freeze 方法）](js/object-freeze.js)
+- [通过 Object.keys 遍历对象的属性](js/object-keys.js)
+- [for..in 循环和 hasOwnProperty](js/for-in-with-hasOwnProperty.js)
+- [getter 方法和 setter 方法](js/getters-setters.js)
+
+### 其他
+
+- [柯里化](js/currying.js)
+- [AMD、CommonJS 和 ES6 模块机制的使用](js/amd-commonjs-es6modules.js)
+- [条件表达式内函数声明](js/conditional-function-declaration.js)
+- [工厂方法](js/factory-functions.js)
 - [在 for() 循环内 setTimeout()](js/setTimeout-inside-loop.js)
 - [Shim vs Polyfill vs Monkey patch](js/shim-polyfill-monkeypatch.js)
-- [字符串方法](js/string-methods.js)
-- [JavaScript 中的样式操作](js/styling.js)
-- [this 关键字](js/this-keyword.js)
+- [方法重载](js/method-overloading.js)
+- [JavaScript 中的 Mixins](js/mixins.js)
 
 ## Todo
 
