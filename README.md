@@ -42,6 +42,7 @@
 - [冻结对象 （Object.freeze 方法）](js/object-freeze.js)
 - [通过 Object.keys 遍历对象的属性](js/object-keys.js)
 - [JavaScript 面向对象编程](js/object-oriented.js)
+- [对象的原型链](js/object-prototype.js)
 
 ## Todo
 
@@ -80,7 +81,7 @@
 - [x] [Object freeze](js/object-freeze.js)
 - [x] [Object keys](js/object-keys.js)
 - [x] [Object oriented concepts](js/object-oriented.js)
-- [ ] [Object prototype](js/object-prototype.js)
+- [x] [Object prototype](js/object-prototype.js)
 - [ ] [Object references](js/object-reference.js)
 - [ ] [OLOO pattern](js/oloo-pattern.js)
 - [ ] [setTimeout inside a loop](js/setTimeout-inside-loop.js)
