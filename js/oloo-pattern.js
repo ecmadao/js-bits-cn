@@ -1,15 +1,17 @@
 /**
- * OLOO (objects linked to other objects) pattern explored
+ * OLOO 设计模式探索
+ * （OLOO，将对象链接到其他对象上，即 objects linked to other objects）
  *
- * @Reference:
+ * @参考资料:
  * https://gist.github.com/getify/d0cdddfa4673657a9941
  * https://gist.github.com/getify/5572383
  * https://gist.github.com/getify/9895188
  * https://github.com/getify/You-Dont-Know-JS/blob/master/this%20&%20object%20prototypes/ch6.md
  */
 
-// CONSTRUCTOR SYNTAX VS OLOO
-// Constructor form
+// 构造函数 vs OLOO
+
+// 构造函数方式
 function Foo() {
 }
 Foo.prototype.y = 11;
@@ -24,7 +26,7 @@ var x = new Bar();
 console.log(x.y + x.z);  // 42
 
 
-// OLOO form
+// OLOO 方式
 var FooObj = {y: 11};
 
 var BarObj = Object.create(FooObj);
@@ -35,12 +37,13 @@ console.log(x.y + x.z);  // 42
 
 
 /**
- * CLASS SYNTAX VS OLOO
+ * Class 语法 vs OLOO
  */
-// ES6 Class style
+
+// ES6 Class
 class Foo {
   constructor(x, y, z) {
-    // Object.assign(target, ...sources) method is used to copy the values of all enumerable own properties from one or more source objects to a target object. It will return the target object.
+    // Object.assign 可用于拷贝对象，将多个目标对象拷贝到 target 对象中，并返回 target
     Object.assign(this, {x, y, z});
   }
 
@@ -58,7 +61,7 @@ for (var i = 0; i < 500; i++) {
 instances[37].hello(); // 222
 
 
-// OLOO Form
+// OLOO
 function Foo(x, y, z) {
   return {
     hello() {
