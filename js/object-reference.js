@@ -1,7 +1,7 @@
 /**
- * Tricky code with object reference
+ * 对象的引用
  *
- * @Reference:
+ * @参考资料:
  * http://ejohn.org/apps/learn/#13
  * http://ejohn.org/apps/learn/#14
  * http://stackoverflow.com/questions/22216159/an-object-null-and-behaviour-in-javascript
@@ -24,21 +24,21 @@
   } catch (e) {
     console.log(false, "Uh, this isn't good! Where'd ninja.yell go?");
   }
-  // Program 1 doesn't work because inside the ninja.yell function, you are referring to ninja again:
+  // 这段代码无法正常工作，因为在 ninja.yell 方法内，又再次引用了 ninja 对象：
   // return n > 0 ? ninja.yell(n-1) + "a" : "hiy";
-  // So, if later on your are assigning null to ninja, this code will throw an error because null doesn't have a property yell.
+  // 因此，之后将 null 赋予给 ninja 后，这段代码就会抛出错误，因为 null 没有 yell 属性
 })();
 
 // Program 2
 (function () {
   var ninja = {
-    yell: function yell(n) {  // We are using a named function here, instead of an anonymous fn in Program 1.
-      return n > 0 ? yell(n - 1) + "a" : "hiy"; // Calling `yell` instead of `ninja.yell` as in Program 1.
+    yell: function yell(n) {  // 使用一个命名函数
+      return n > 0 ? yell(n - 1) + "a" : "hiy"; // 使用 yell 替代 ninja.yell
     }
   };
   console.log(ninja.yell(4) == "hiyaaaa");
 
-  var samurai = {yell: ninja.yell}; // ninja.yell already assigned before ninja={}
+  var samurai = {yell: ninja.yell}; // 在创建 ninja 对象之前 ninja.yell 就已经声明好了（是因为声明了一个命名函数 yell）
   var ninja = null;
 
   try {
@@ -46,6 +46,7 @@
   } catch (e) {
     console.log(false, "Uh, this isn't good! Where'd ninja.yell go?");
   }
+  // Program 2 可以正常工作，因为创建了一个命名函数，然后将 ninja.yell 引用到了这个函数上
   // Program 2 works because, instead of referring to the object that holds the function (ninja),
   // you are giving the function a name and directly refer to that name.
 })();
