@@ -47,6 +47,7 @@
 - [OLOO 设计模式探索](js/oloo-pattern.js)
 - [在 for() 循环内 setTimeout()](js/setTimeout-inside-loop.js)
 - [Shim vs Polyfill vs Monkey patch](js/shim-polyfill-monkeypatch.js)
+- [字符串方法](js/string-methods.js)
 
 ## Todo
 
@@ -90,6 +91,6 @@
 - [x] [OLOO pattern](js/oloo-pattern.js)
 - [x] [setTimeout inside a loop](js/setTimeout-inside-loop.js)
 - [x] [Shim vs Polyfill vs Monkey patch](js/shim-polyfill-monkeypatch.js)
-- [ ] [String methods](js/string-methods.js)
+- [x] [String methods](js/string-methods.js)
 - [ ] [Styling](js/styling.js)
 - [ ] [this keyword](js/this-keyword.js)
