@@ -69,7 +69,7 @@ console.log(previewStory[1]); // Unicorns fly?  Regardless!
 // 除此以外，slice() 和 substring() 类似，但不同之处在于 slice 可以接收负的 index，即从数组末尾开始操作
 var story = "Foobarus is a magical unicorn with an ID of 21313 which flies higher than all other unicorns.  Unicorns fly?  Regardless!";
 var theLastFewCharacters = story.substring(story.length - 20);
-console.log("..." + theLastFewCharacters); // ..ns fly?  Regardless!
+console.log("..." + theLastFewCharacters); // ...ns fly?  Regardless!
 
 
 // String.prototype.toLowerCase() 和 String.prototype.toUpperCase()
